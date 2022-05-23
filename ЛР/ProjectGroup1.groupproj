@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{853EE2B5-AD6E-4D00-8443-4F1B9407CCBD}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Sem1.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\..\..\..\..\Документы\Embarcadero\Studio\Projects\Project1.cbproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="Sem1">
+        <MSBuild Projects="Sem1.cbproj"/>
+    </Target>
+    <Target Name="Sem1:Clean">
+        <MSBuild Projects="Sem1.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Sem1:Make">
+        <MSBuild Projects="Sem1.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Project1">
+        <MSBuild Projects="..\..\..\..\..\Документы\Embarcadero\Studio\Projects\Project1.cbproj"/>
+    </Target>
+    <Target Name="Project1:Clean">
+        <MSBuild Projects="..\..\..\..\..\Документы\Embarcadero\Studio\Projects\Project1.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Project1:Make">
+        <MSBuild Projects="..\..\..\..\..\Документы\Embarcadero\Studio\Projects\Project1.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="Sem1;Project1"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="Sem1:Clean;Project1:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="Sem1:Make;Project1:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
